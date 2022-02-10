@@ -13,6 +13,10 @@ export default function Bebidas(props) {
   const [litros, setLitros] = useState(0);
 
   useEffect(() => {
+    if (!cerveja) setNumeroCervejas(0);
+    if (!refrigerante) setNumeroRefris(0);
+    if (!suco) setNumeroSucos(0);
+
     setLitros(numeroCervejas * 1200 + numeroRefris * 800 + numeroSucos * 600);
     localStorage.setItem("litros", litros);
   }, [<TextInput />]);

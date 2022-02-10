@@ -16,9 +16,10 @@ export default function AppForm({ navigation }) {
   const [mulheres, setMulheres] = useState(0);
   const [criancas, setCriancas] = useState(0);
   const [carne, setCarne] = useState(0);
+  const [bebidas, setBebidas] = useState(false);
 
   useEffect(() => {
-    setCarne(homens * 500 + mulheres * 400 + criancas * 200);
+    setCarne(homens * 600 + mulheres * 500 + criancas * 200);
   }, [<TextInput />]);
 
   async function handleButtonPress() {
@@ -26,13 +27,16 @@ export default function AppForm({ navigation }) {
       alert("Campos em branco");
     } else {
       const litros = localStorage.getItem("litros");
+      const salGrosso = carne * 0.2;
+      const kgCarvao = carne * 0.75;
+      const kgGelo = litros * 0.5;
       const item = {
         id: new Date().getTime(),
         kgCarne: parseFloat(carne),
         bebidas: parseFloat(litros),
-        salGrosso: parseFloat(),
-        carvao: parseFloat(),
-        gelo: parseFloat(),
+        salGrosso: parseFloat(salGrosso),
+        carvao: parseFloat(kgCarvao),
+        gelo: parseFloat(kgGelo),
       };
       let savedItems = [];
       const response = await AsyncStorage.getItem("dados");
@@ -41,6 +45,7 @@ export default function AppForm({ navigation }) {
       savedItems.push(item);
 
       await AsyncStorage.setItem("dados", JSON.stringify(savedItems));
+      console.log(item);
       navigation.navigate("AppList", item);
     }
   }
@@ -73,7 +78,11 @@ export default function AppForm({ navigation }) {
         <View style={styles.button}>
           <Text style={styles.buttonText}>{carne}</Text>
         </View>
-        <Bebidas />
+        <View>
+          <Text>Bebidas?</Text>
+          <CheckBox value={bebidas} onValueChange={setBebidas} />
+        </View>
+        {bebidas && <Bebidas />}
         <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
           <Text style={styles.buttonText}>Salvar</Text>
         </TouchableOpacity>
