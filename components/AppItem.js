@@ -11,7 +11,13 @@ import {
 export default function AppItem(props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.textItem}>{props.item}</Text>
+      <View>
+        <Text style={styles.textItem}>{props.carne}</Text>
+        <Text style={styles.textItem}>{props.litros}</Text>
+        <Text style={styles.textItem}>{props.sal}</Text>
+        <Text style={styles.textItem}>{props.carvao}</Text>
+        <Text style={styles.textItem}>{props.gelo}</Text>
+      </View>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity style={styles.deleteButton}>
           <Text style={styles.buttonText}>X</Text>

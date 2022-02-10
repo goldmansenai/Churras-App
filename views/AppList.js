@@ -5,12 +5,30 @@ import AppItem from "../components/AppItem";
 
 export default function AppList() {
   const [items, setItems] = useState([
-    { id: 1, quantidade: 5, descricao: "arroz" },
-    { id: 2, quantidade: 1, descricao: "feijão" },
-    { id: 3, quantidade: 0.5, descricao: "lentilha" },
-    { id: 4, quantidade: 1, descricao: "massa" },
-    { id: 5, quantidade: 1, descricao: "katchup" },
-    { id: 6, quantidade: 1, descricao: "queijo-ralado" },
+    {
+      id: 1,
+      kgCarne: 5000,
+      bebidas: 8000,
+      salGrosso: 1500,
+      carvao: 6000,
+      gelo: 4000,
+    },
+    {
+      id: 2,
+      kgCarne: 10000,
+      bebidas: 15000,
+      salGrosso: 2500,
+      carvao: 8000,
+      gelo: 7500,
+    },
+    {
+      id: 3,
+      kgCarne: 2000,
+      bebidas: 1000,
+      salGrosso: 500,
+      carvao: 1250,
+      gelo: 500,
+    },
   ]);
   return (
     <View style={styles.container}>
@@ -25,7 +43,11 @@ export default function AppList() {
             <AppItem
               key={item.id}
               id={item.id}
-              item={item.quantidade + "  de " + item.descricao}
+              carne={item.kgCarne + " g"}
+              litros={item.bebidas + " ml"}
+              sal={item.salGrosso + " g"}
+              carvao={item.carvao + " g"}
+              gelo={item.gelo + " g"}
             />
           );
         })}
