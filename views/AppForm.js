@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Bebidas from "../components/Bebidas";
+import "../Database/Database";
 
 export default function AppForm({ navigation }) {
   const [homens, setHomens] = useState(0);
@@ -38,15 +39,9 @@ export default function AppForm({ navigation }) {
         carvao: parseFloat(kgCarvao),
         gelo: parseFloat(kgGelo),
       };
-      let savedItems = [];
-      const response = await AsyncStorage.getItem("dados");
-
-      if (response) savedItems = JSON.parse(response);
-      savedItems.push(item);
-
-      await AsyncStorage.setItem("dados", JSON.stringify(savedItems));
-      console.log(item);
-      navigation.navigate("AppList", item);
+      Database.saveItem(item).then((response) =>
+        navigation.navigate("AppList", item)
+      );
     }
   }
 

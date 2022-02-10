@@ -1,35 +1,15 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import AppItem from "../components/AppItem";
+import "../Database/Database";
 
-export default function AppList() {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      kgCarne: 5000,
-      bebidas: 8000,
-      salGrosso: 1500,
-      carvao: 6000,
-      gelo: 4000,
-    },
-    {
-      id: 2,
-      kgCarne: 10000,
-      bebidas: 15000,
-      salGrosso: 2500,
-      carvao: 8000,
-      gelo: 7500,
-    },
-    {
-      id: 3,
-      kgCarne: 2000,
-      bebidas: 1000,
-      salGrosso: 500,
-      carvao: 1250,
-      gelo: 500,
-    },
-  ]);
+export default function AppList({ route, navigation }) {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    Database.getItems().then((items) => setItems(items));
+  }, [route]);
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
