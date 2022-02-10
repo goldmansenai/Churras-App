@@ -6,8 +6,10 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  CheckBox,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Bebidas from "../components/Bebidas";
 
 export default function AppForm({ navigation }) {
   const [homens, setHomens] = useState(0);
@@ -17,17 +19,17 @@ export default function AppForm({ navigation }) {
 
   useEffect(() => {
     setCarne(homens * 500 + mulheres * 400 + criancas * 200);
-    console.log(carne);
   }, [<TextInput />]);
 
   async function handleButtonPress() {
     if (homens == "" || mulheres == "" || criancas == "") {
       alert("Campos em branco");
     } else {
+      const litros = localStorage.getItem("litros");
       const item = {
         id: new Date().getTime(),
         kgCarne: parseFloat(carne),
-        bebidas: parseFloat(),
+        bebidas: parseFloat(litros),
         salGrosso: parseFloat(),
         carvao: parseFloat(),
         gelo: parseFloat(),
@@ -39,7 +41,6 @@ export default function AppForm({ navigation }) {
       savedItems.push(item);
 
       await AsyncStorage.setItem("dados", JSON.stringify(savedItems));
-      console.log(item);
       navigation.navigate("AppList", item);
     }
   }
@@ -72,6 +73,7 @@ export default function AppForm({ navigation }) {
         <View style={styles.button}>
           <Text style={styles.buttonText}>{carne}</Text>
         </View>
+        <Bebidas />
         <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
           <Text style={styles.buttonText}>Salvar</Text>
         </TouchableOpacity>
