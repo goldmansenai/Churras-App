@@ -8,9 +8,8 @@ import {
   TouchableOpacity,
   CheckBox,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Bebidas from "../components/Bebidas";
-import "../Database/Database";
+import { saveItem } from "../Database/Database";
 
 export default function AppForm({ navigation }) {
   const [homens, setHomens] = useState(0);
@@ -39,9 +38,8 @@ export default function AppForm({ navigation }) {
         carvao: parseFloat(kgCarvao),
         gelo: parseFloat(kgGelo),
       };
-      Database.saveItem(item).then((response) =>
-        navigation.navigate("AppList", item)
-      );
+      localStorage.setItem("obj", JSON.stringify(item));
+      saveItem(item).then((response) => navigation.navigate("AppList", item));
     }
   }
 

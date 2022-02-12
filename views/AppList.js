@@ -2,13 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import AppItem from "../components/AppItem";
-import "../Database/Database";
+import { getItems, saveItem } from "../Database/Database";
 
 export default function AppList({ route, navigation }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    Database.getItems().then((items) => setItems(items));
+    getItems().then((items) => setItems(items));
   }, [route]);
   return (
     <View style={styles.container}>
