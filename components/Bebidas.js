@@ -1,6 +1,7 @@
 import react, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, CheckBox } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+// import CheckBox from "@react-native-community/checkbox";
 
 export default function Bebidas(props) {
   const [cerveja, setCerveja] = useState(false);

@@ -1,7 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import { deleteItem } from "../Database/Database";
 
 export default function AppItem(props) {
+  function handleDeletePress() {
+    // TESTE COM EXPO GO
+    // Alert.alert(
+    //   "Atenção",
+    //   "Você tem certeza que deseja excluir este item?",
+    // [
+    //   {
+    //     text: "Não",
+    //     onPress: () => console.log("Cancel Pressed"),
+    //     style: "cancel",
+    //   },
+    //   { text: "Sim", onPress: () => console.log(`${props.id} deleted`) },
+    // ],
+    // { cancelable: false }
+    // );
+    if (window.confirm("Tem certeza que deseja deletar? ")) {
+      // console.log(`${props.id} deleted`);
+      deleteItem(props.id).then((response) =>
+        props.navigation.navigate("AppList", { id: props.id })
+      );
+    } else {
+      console.log("Nada foi deletado");
+    }
+  }
   return (
     <View style={styles.container}>
       <View>
@@ -13,7 +38,10 @@ export default function AppItem(props) {
         <Text style={styles.textItem}>{props.gelo}</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.deleteButton}>
+        <TouchableOpacity
+          style={styles.deleteButton}
+          onPress={handleDeletePress}
+        >
           <Text style={styles.buttonText}>X</Text>
         </TouchableOpacity>
       </View>

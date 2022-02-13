@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Bebidas from "../components/Bebidas";
 import { saveItem } from "../Database/Database";
+// import CheckBox from "@react-native-community/checkbox";
 
 export default function AppForm({ route, navigation }) {
   const [nome, setNome] = useState(0);
@@ -24,7 +25,7 @@ export default function AppForm({ route, navigation }) {
   }, [<TextInput />]);
 
   async function handleButtonPress() {
-    if (homens == "" || mulheres == "" || criancas == "") {
+    if (nome == "" || homens == "" || mulheres == "" || criancas == "") {
       alert("Campos em branco");
     } else {
       const litros = localStorage.getItem("litros");
@@ -40,8 +41,8 @@ export default function AppForm({ route, navigation }) {
         carvao: parseFloat(kgCarvao),
         gelo: parseFloat(kgGelo),
       };
-      localStorage.setItem("obj", JSON.stringify(item));
       saveItem(item).then((response) => navigation.navigate("AppList", item));
+      localStorage.removeItem("litros");
     }
   }
 
