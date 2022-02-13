@@ -1,17 +1,11 @@
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import React from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 export default function AppItem(props) {
   return (
     <View style={styles.container}>
       <View>
+        <Text style={styles.textItem}>{props.nome}</Text>
         <Text style={styles.textItem}>{props.carne}</Text>
         <Text style={styles.textItem}>{props.litros}</Text>
         <Text style={styles.textItem}>{props.sal}</Text>
@@ -21,9 +15,6 @@ export default function AppItem(props) {
       <View style={styles.buttonsContainer}>
         <TouchableOpacity style={styles.deleteButton}>
           <Text style={styles.buttonText}>X</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.editButton}>
-          <Text style={styles.buttonText}>Editar</Text>
         </TouchableOpacity>
       </View>
     </View>

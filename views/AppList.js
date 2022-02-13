@@ -23,11 +23,13 @@ export default function AppList({ route, navigation }) {
             <AppItem
               key={item.id}
               id={item.id}
+              nome={item.nomeChurrasco}
               carne={item.kgCarne + " g"}
               litros={item.bebidas + " ml"}
               sal={item.salGrosso + " g"}
               carvao={item.carvao + " g"}
               gelo={item.gelo + " g"}
+              navigation={navigation}
             />
           );
         })}

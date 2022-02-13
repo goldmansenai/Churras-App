@@ -11,7 +11,8 @@ import {
 import Bebidas from "../components/Bebidas";
 import { saveItem } from "../Database/Database";
 
-export default function AppForm({ navigation }) {
+export default function AppForm({ route, navigation }) {
+  const [nome, setNome] = useState(0);
   const [homens, setHomens] = useState(0);
   const [mulheres, setMulheres] = useState(0);
   const [criancas, setCriancas] = useState(0);
@@ -32,6 +33,7 @@ export default function AppForm({ navigation }) {
       const kgGelo = litros * 0.5;
       const item = {
         id: new Date().getTime(),
+        nomeChurrasco: nome,
         kgCarne: parseFloat(carne),
         bebidas: parseFloat(litros),
         salGrosso: parseFloat(salGrosso),
@@ -47,6 +49,12 @@ export default function AppForm({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>Item para comprar</Text>
       <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Nome/Data do churrasco "
+          clearButtonMode="always"
+          onChangeText={setNome}
+        />
         <TextInput
           style={styles.input}
           placeholder="Quantos homens?"
