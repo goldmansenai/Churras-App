@@ -1,9 +1,10 @@
 import react, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, CheckBox } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-// import CheckBox from "@react-native-community/checkbox";
+import CheckBox from "expo-checkbox";
+// import { saveLitros } from "../Database/Database";
 
-export default function Bebidas(props) {
+export default function Bebidas() {
   const [cerveja, setCerveja] = useState(false);
   const [refrigerante, setRefrigerante] = useState(false);
   const [suco, setSuco] = useState(false);
@@ -19,8 +20,13 @@ export default function Bebidas(props) {
     if (!suco) setNumeroSucos(0);
 
     setLitros(numeroCervejas * 1200 + numeroRefris * 800 + numeroSucos * 600);
-    localStorage.setItem("litros", litros);
   }, [<TextInput />]);
+
+  // useEffect(() => {
+  //   saveLitros(litros).then((response) => {
+  //     console.log(litros);
+  //   });
+  // }, []);
 
   return (
     <View style={styles.checkboxContainer}>

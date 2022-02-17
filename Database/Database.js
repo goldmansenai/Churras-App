@@ -11,6 +11,22 @@ export const saveItem = async (item) => {
   return AsyncStorage.setItem("dados", JSON.stringify(savedItems));
 };
 
+// export const saveLitros = async (litros) => {
+//   let savedLitros = [];
+//   const response = await AsyncStorage.getItem("litros");
+
+//   if (response) savedLitros = JSON.parse(response);
+//   savedLitros.push(litros);
+
+//   return AsyncStorage.setItem("litros", JSON.stringify(savedLitros));
+// };
+
+// export const getLitros = async () => {
+//   const response = await AsyncStorage.getItem("litros");
+//   if (response) return Promise.resolve(JSON.parse(response));
+//   else return Promise.resolve([]);
+// };
+
 export const getItems = async () => {
   const response = await AsyncStorage.getItem("dados");
   if (response) return Promise.resolve(JSON.parse(response));
