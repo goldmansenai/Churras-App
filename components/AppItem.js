@@ -1,31 +1,35 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  Image,
+} from "react-native";
 import { deleteItem } from "../Database/Database";
 
 export default function AppItem(props) {
   function handleDeletePress() {
-    // TESTE COM EXPO GO
-    // Alert.alert(
-    //   "Atenção",
-    //   "Você tem certeza que deseja excluir este item?",
-    // [
-    //   {
-    //     text: "Não",
-    //     onPress: () => console.log("Cancel Pressed"),
-    //     style: "cancel",
-    //   },
-    //   { text: "Sim", onPress: () => console.log(`${props.id} deleted`) },
-    // ],
-    // { cancelable: false }
-    // );
-    if (window.confirm("Tem certeza que deseja deletar? ")) {
-      // console.log(`${props.id} deleted`);
-      deleteItem(props.id).then((response) =>
-        props.navigation.navigate("AppList", { id: props.id })
-      );
-    } else {
-      console.log("Nada foi deletado");
-    }
+    Alert.alert(
+      "Atenção",
+      "Você tem certeza que deseja excluir este item?",
+      [
+        {
+          text: "Não",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "Sim",
+          onPress: () =>
+            deleteItem(props.id).then((response) =>
+              props.navigation.navigate("AppList", { id: props.id })
+            ),
+        },
+      ],
+      { cancelable: false }
+    );
   }
   return (
     <View style={styles.container}>
@@ -42,7 +46,16 @@ export default function AppItem(props) {
           style={styles.deleteButton}
           onPress={handleDeletePress}
         >
-          <Text style={styles.buttonText}>X</Text>
+          <Image
+            style={styles.buttonText}
+            source={require("../assets/delete.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.editButton}>
+          <Image
+            source={require("../assets/edit.png")}
+            style={styles.buttonText}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -60,12 +73,13 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     borderBottomWidth: 1,
     borderBottomColor: "#CCC",
-    paddingBottom: 10,
+    paddingBottom: 30,
     marginTop: 10,
   },
   editButton: {
     marginLeft: 10,
-    height: 40,
+    height: 50,
+    width: 50,
     backgroundColor: "blue",
     borderRadius: 10,
     padding: 10,
@@ -77,8 +91,8 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginLeft: 10,
-    height: 40,
-    width: 40,
+    height: 50,
+    width: 50,
     backgroundColor: "red",
     borderRadius: 10,
     padding: 10,

@@ -14,21 +14,18 @@ export default function AppList({ route, navigation }) {
     <View style={styles.container}>
       <StatusBar style="light" />
       <Text style={styles.title}>Lista de Churrascos</Text>
-      <ScrollView
-        style={styles.scrollContainer}
-        contentContainerStyle={styles.itemsContainer}
-      >
+      <ScrollView style={styles.scrollContainer}>
         {items.map((item) => {
           return (
             <AppItem
               key={item.id}
               id={item.id}
               nome={item.nomeChurrasco}
-              carne={item.kgCarne + " g"}
-              litros={item.bebidas + " ml"}
-              sal={item.salGrosso + " g"}
-              carvao={item.carvao + " g"}
-              gelo={item.gelo + " g"}
+              carne={item.kgCarne + " Kg"}
+              litros={item.bebidas + " L"}
+              sal={item.salGrosso + " Kg"}
+              carvao={item.carvao + " Kg"}
+              gelo={item.gelo + " Kg"}
               navigation={navigation}
             />
           );
@@ -55,14 +52,10 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     width: "90%",
-  },
-  itemsContainer: {
-    flex: 1,
     marginTop: 10,
     padding: 20,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    alignItems: "stretch",
     backgroundColor: "#fff",
   },
 });
