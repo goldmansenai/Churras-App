@@ -1,9 +1,10 @@
-import react, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, CheckBox } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-// import CheckBox from "@react-native-community/checkbox";
+import { CheckBox } from "@react-native-community/checkbox";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function Bebidas(props) {
+export default function Bebidas() {
   const [cerveja, setCerveja] = useState(false);
   const [refrigerante, setRefrigerante] = useState(false);
   const [suco, setSuco] = useState(false);

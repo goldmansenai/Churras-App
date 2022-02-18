@@ -6,13 +6,12 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  CheckBox,
 } from "react-native";
 import Bebidas from "../components/Bebidas";
 import { saveItem } from "../Database/Database";
-// import CheckBox from "@react-native-community/checkbox";
+import { CheckBox } from "@react-native-community/checkbox";
 
-export default function AppForm({ route, navigation }) {
+export default function AppForm({ navigation }) {
   const [nome, setNome] = useState(0);
   const [homens, setHomens] = useState(0);
   const [mulheres, setMulheres] = useState(0);
