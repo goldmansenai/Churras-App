@@ -24,12 +24,12 @@ O Churras App faz uso de:
 
 Clone o projeto em uma pasta de sua escolha
 ```
-git clone
+git clone https://github.com/goldmansenai/Churras-App
 ```
 
 Acesse a pasta do projeto clonado e em seguida instale as dependências
 ```
-cd && yarn install <ou npm install>
+cd Churras-App && yarn install <ou npm install>
 ```
 
 Rode o projeto com expo start, ou yarn/npm start
