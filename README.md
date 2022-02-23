@@ -38,16 +38,23 @@ expo start
 ```
 
 ## Demo
-
+<p>
 AppList:
+</p>
 <img src="./assets/pg_inicial.png"/>
+<p>
 AppForm:
-<img src=".assets/pg_form.png"/>
-Conteúdo em AppList
-<img src=".assets/churrasco-1.png"/>
-<img src=".assets/churrasco-2.png"/>
-<img src=".assets/churrasco-3.png"/>
-Deletar conteúdo
+</p>
+<img src="./assets/pg_form.png"/>
+<p>
+Conteúdo em AppList:
+</p>
+<img src="./assets/churrasco-1.png"/>
+<img src="./assets/churrasco-2.png"/>
+<img src="./assets/churrasco-3.png"/>
+<p>
+Deletar conteúdo:
+</p>
 <img src="./assets/churrasco-delete.png"/>
 <img src="./assets/pg_inicial.png"/>
 
