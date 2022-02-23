@@ -1,7 +1,6 @@
 <p align="center">
-# Churras App 
-
-![churrasqueira](https://user-images.githubusercontent.com/82671540/155353481-90ac25b7-c675-4bd4-9dbe-665bf36e9680.png)
+<h1>Churras App</h1> 
+<img src="https://user-images.githubusercontent.com/82671540/155353481-90ac25b7-c675-4bd4-9dbe-665bf36e9680.png" />
 </p>
 
 > Aplicação para auxiliar a criação de um churrasco
@@ -41,13 +40,16 @@ expo start
 ## Demo
 
 AppList:
-<img/>
+<img src="./assets/pg_inicial.png"/>
 AppForm:
-<img/>
+<img src=".assets/pg_form.png"/>
 Conteúdo em AppList
-<img/>
+<img src=".assets/churrasco-1.png"/>
+<img src=".assets/churrasco-2.png"/>
+<img src=".assets/churrasco-3.png"/>
 Deletar conteúdo
-<img/>
+<img src="./assets/churrasco-delete.png"/>
+<img src="./assets/pg_inicial.png"/>
 
 ## Autores
 
