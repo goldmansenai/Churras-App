@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-import { CheckBox } from "expo-checkbox";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import CheckBox from "expo-checkbox";
 
 export default function Bebidas() {
   const [cerveja, setCerveja] = useState(false);
@@ -21,12 +20,6 @@ export default function Bebidas() {
 
     setLitros(numeroCervejas * 1200 + numeroRefris * 800 + numeroSucos * 600);
   }, [<TextInput />]);
-
-  // useEffect(() => {
-  //   saveLitros(litros).then((response) => {
-  //     console.log(litros);
-  //   });
-  // }, []);
 
   return (
     <View style={styles.checkboxContainer}>

@@ -35,11 +35,11 @@ export default function AppItem(props) {
     <View style={styles.container}>
       <View>
         <Text style={styles.textItem}>{props.nome}</Text>
-        <Text style={styles.textItem}>{props.carne}</Text>
-        <Text style={styles.textItem}>{props.litros}</Text>
-        <Text style={styles.textItem}>{props.sal}</Text>
-        <Text style={styles.textItem}>{props.carvao}</Text>
-        <Text style={styles.textItem}>{props.gelo}</Text>
+        <Text style={styles.textItem}>🥩{props.carne}</Text>
+        <Text style={styles.textItem}>🍻{props.litros}</Text>
+        <Text style={styles.textItem}>🧂{props.sal}</Text>
+        <Text style={styles.textItem}>{props.carvao} de carvão</Text>
+        <Text style={styles.textItem}>{props.gelo} de gelo</Text>
       </View>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity
@@ -47,14 +47,7 @@ export default function AppItem(props) {
           onPress={handleDeletePress}
         >
           <Image
-            style={styles.buttonText}
             source={require("../assets/delete.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.editButton}>
-          <Image
-            source={require("../assets/edit.png")}
-            style={styles.buttonText}
           />
         </TouchableOpacity>
       </View>
@@ -101,10 +94,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 10,
     shadowColor: "#ccc",
     alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
   },
   textItem: {
     fontSize: 20,

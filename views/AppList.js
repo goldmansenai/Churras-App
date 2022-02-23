@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Button } from "react-native";
 import AppItem from "../components/AppItem";
 import { getItems } from "../Database/Database";
 
 export default function AppList({ route, navigation }) {
+  function handlePress() {
+    navigation.navigate("AppForm")
+  }
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -15,6 +18,14 @@ export default function AppList({ route, navigation }) {
       <StatusBar style="light" />
       <Text style={styles.title}>Lista de Churrascos</Text>
       <ScrollView style={styles.scrollContainer}>
+        {items == '' && (
+          <View>
+            <Text>Você não possui nenhum churrasco, gostaria de criar um?</Text>
+            <View >
+              <Button onPress={handlePress} title="Criar" />
+            </View>
+          </View>
+        )}
         {items.map((item) => {
           return (
             <AppItem
@@ -57,5 +68,22 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     backgroundColor: "#fff",
+  },
+  button: {
+    marginTop: 10,
+    height: 60,
+    backgroundColor: "blue",
+    borderRadius: 10,
+    paddingHorizontal: 24,
+    fontSize: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 20,
+    shadowOpacity: 20,
+    shadowColor: "#ccc",
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });

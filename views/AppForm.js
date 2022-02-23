@@ -6,10 +6,10 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  ScrollView
 } from "react-native";
-// import Bebidas from "../components/Bebidas";
 import { saveItem } from "../Database/Database";
-import { CheckBox } from "expo-checkbox";
+import CheckBox from "expo-checkbox";
 
 export default function AppForm({ navigation }) {
   const [nome, setNome] = useState(0);
@@ -26,18 +26,10 @@ export default function AppForm({ navigation }) {
   const [cerveja, setCerveja] = useState(false);
   const [refrigerante, setRefrigerante] = useState(false);
   const [suco, setSuco] = useState(false);
-  // const [litrosBebidas, setLitrosBebidas] = useState([]);
 
   useEffect(() => {
     setCarne(homens * 0.6 + mulheres * 0.5 + criancas * 0.2);
   }, [<TextInput />]);
-
-  // useEffect(() => {
-  //   getLitros().then((response) => {
-  //     setLitrosBebidas(response);
-  //     // console.log(litrosBebidas);
-  //   });
-  // }, [route]);
 
   useEffect(() => {
     if (!cerveja) setNumeroCervejas(0);
