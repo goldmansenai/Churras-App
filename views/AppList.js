@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, ScrollView, Button } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import AppItem from "../components/AppItem";
 import { getItems } from "../Database/Database";
 
@@ -20,9 +21,13 @@ export default function AppList({ route, navigation }) {
       <ScrollView style={styles.scrollContainer}>
         {items == '' && (
           <View>
-            <Text>Você não possui nenhum churrasco, gostaria de criar um?</Text>
-            <View >
-              <Button onPress={handlePress} title="Criar" />
+            <Text>Você não possui nenhum churrasco, gostaria de criar um? {'\n'}</Text>
+
+
+            <View>
+              <TouchableOpacity onPress={() => {navigation.navigate("AppForm")}} style={{backgroundColor:'red', padding:25}}>
+                <Text>GERAR</Text>
+              </TouchableOpacity>
             </View>
           </View>
         )}
@@ -86,4 +91,14 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
+  btn: {
+    textAlign: 'center',
+    alignItems: 'center',
+    backgroundColor: '#D93600',
+    color: 'white',
+    width:'100%',
+    fontSize: 20,
+    padding: 5,
+    borderRadius: 100
+  }
 });

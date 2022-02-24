@@ -6,7 +6,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import { saveItem } from "../Database/Database";
 import CheckBox from "expo-checkbox";
@@ -100,14 +100,10 @@ export default function AppForm({ navigation }) {
           </View>
           {bebidas && (
             // <Bebidas />
-            <View style={styles.checkboxContainer}>
-              <View>
+            <View>
+              <View style={styles.checkboxContainer}>
                 <Text>Cerveja?</Text>
-                <CheckBox
-                  style={styles.checkbox}
-                  value={cerveja}
-                  onValueChange={setCerveja}
-                />
+                <CheckBox value={cerveja} onValueChange={setCerveja} />
                 {cerveja && (
                   <TextInput
                     style={styles.input}
@@ -118,7 +114,7 @@ export default function AppForm({ navigation }) {
                   />
                 )}
               </View>
-              <View>
+              <View  style={styles.checkboxContainer}>
                 <Text>Refrigerante?</Text>
                 <CheckBox
                   style={styles.checkbox}
@@ -135,7 +131,7 @@ export default function AppForm({ navigation }) {
                   />
                 )}
               </View>
-              <View>
+              <View  style={styles.checkboxContainer}>
                 <Text>Suco?</Text>
                 <CheckBox
                   style={styles.checkbox}
@@ -220,10 +216,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   checkboxContainer: {
-    flexDirection: "column",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 20,
   },
   checkbox: {
-    alignSelf: "center",
+    // alignSelf: "center",
+    marginLeft: 16,
+    marginRight: 16,
   },
 });
